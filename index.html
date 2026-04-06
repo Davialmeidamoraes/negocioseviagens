@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Meu Primeiro Site</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f0f4ff;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Cabeçalho do site */
+      header {
+        background-color: #3a3aff;
+        color: white;
+        text-align: center;
+        padding: 30px;
+      }
+
+      header h1 {
+        font-size: 36px;
+      }
+
+      header p {
+        font-size: 16px;
+        margin-top: 8px;
+        opacity: 0.85;
+      }
+
+      /* Grade de cartões */
+      .grade {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding: 40px;
+        justify-content: center;
+      }
+
+      /* Cada cartão de paisagem */
+      .cartao {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        width: 320px;
+        overflow: hidden;
+      }
+
+      .cartao img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .cartao-conteudo {
+        padding: 16px;
+      }
+
+      .cartao-conteudo h2 {
+        color: #3a3aff;
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      /* Área de texto editável */
+      .cartao-conteudo textarea {
+        width: 100%;
+        height: 80px;
+        border: 1px solid #cccccc;
+        border-radius: 6px;
+        padding: 8px;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+        resize: none;
+        color: #444;
+      }
+
+      .cartao-conteudo textarea:focus {
+        outline: none;
+        border-color: #3a3aff;
+      }
+
+      /* Botão salvar de cada cartão */
+      .cartao-conteudo button {
+        margin-top: 10px;
+        background-color: #3a3aff;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .cartao-conteudo button:hover {
+        background-color: #2020cc;
+      }
+
+      /* Mensagem de salvo */
+      .mensagem {
+        margin-top: 8px;
+        color: green;
+        font-size: 13px;
+        display: none;
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <header>
+      <h1>Galeria de Paisagens</h1>
+      <p>Clique em cada área de texto e escreva o que quiser sobre o lugar</p>
+    </header>
+
+    <div class="grade">
+
+      <!-- Cartão 1 -->
+      <div class="cartao">
+        <img src="https://picsum.photos/seed/montanha/640/400" alt="Montanha">
+        <div class="cartao-conteudo">
+          <h2>Montanhas</h2>
+          <textarea placeholder="Escreva algo sobre este lugar..."></textarea>
+          <button onclick="salvar(this)">Salvar</button>
+          <p class="mensagem">Salvo!</p>
+        </div>
+      </div>
+
+      <!-- Cartão 2 -->
+      <div class="cartao">
+        <img src="https://picsum.photos/seed/praia/640/400" alt="Praia">
+        <div class="cartao-conteudo">
+          <h2>Praia</h2>
+          <textarea placeholder="Escreva algo sobre este lugar..."></textarea>
+          <button onclick="salvar(this)">Salvar</button>
+          <p class="mensagem">Salvo!</p>
+        </div>
+      </div>
+
+      <!-- Cartão 3 -->
+      <div class="cartao">
+        <img src="https://picsum.photos/seed/floresta/640/400" alt="Floresta">
+        <div class="cartao-conteudo">
+          <h2>Floresta</h2>
+          <textarea placeholder="Escreva algo sobre este lugar..."></textarea>
+          <button onclick="salvar(this)">Salvar</button>
+          <p class="mensagem">Salvo!</p>
+        </div>
+      </div>
+
+      <!-- Cartão 4 -->
+      <div class="cartao">
+        <img src="https://picsum.photos/seed/deserto/640/400" alt="Deserto">
+        <div class="cartao-conteudo">
+          <h2>Deserto</h2>
+          <textarea placeholder="Escreva algo sobre este lugar..."></textarea>
+          <button onclick="salvar(this)">Salvar</button>
+          <p class="mensagem">Salvo!</p>
+        </div>
+      </div>
+
+      <!-- Cartão 5 -->
+      <div class="cartao">
+        <img src="https://picsum.photos/seed/lago/640/400" alt="Lago">
+        <div class="cartao-conteudo">
+          <h2>Lago</h2>
+          <textarea placeholder="Escreva algo sobre este lugar..."></textarea>
+          <button onclick="salvar(this)">Salvar</button>
+          <p class="mensagem">Salvo!</p>
+        </div>
+      </div>
+
+      <!-- Cartão 6 -->
+      <div class="cartao">
+        <img src="https://picsum.photos/seed/cidade/640/400" alt="Cidade">
+        <div class="cartao-conteudo">
+          <h2>Cidade</h2>
+          <textarea placeholder="Escreva algo sobre este lugar..."></textarea>
+          <button onclick="salvar(this)">Salvar</button>
+          <p class="mensagem">Salvo!</p>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      function salvar(botao) {
+        // Pega o cartão pai do botão clicado
+        let conteudo = botao.parentElement;
+
+        // Pega o texto digitado
+        let texto = conteudo.querySelector("textarea").value;
+
+        // Mostra mensagem de salvo
+        let mensagem = conteudo.querySelector(".mensagem");
+        mensagem.style.display = "block";
+
+        // Esconde a mensagem depois de 2 segundos
+        setTimeout(function() {
+          mensagem.style.display = "none";
+        }, 2000);
+      }
+    </script>
+
+  </body>
+
+</html>
